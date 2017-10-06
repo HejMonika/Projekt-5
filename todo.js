@@ -1,66 +1,47 @@
 var todoList = {
-  todos: [],
-  displayTodos: function() {
-    if (this.todos.length === 0) {
-      console.log('Your todo list is empty!');
-    } else {
-      console.log("My Todos:");
-      for (var i = 0; i < this.todos.length; i++) {
-        if (this.todos[i].completed === true) {
-          console.log('(x)', this.todos[i].todoText);
-        } else {
-          console.log('( )', this.todos[i].todoText);
-        }
-      }
-    }
-  },
-  addTodo: function(todoText) {  // addTodo('hi')
-    this.todos.push({
-      todoText: todoText,        // todoTest: "hi"
-      completed: false      
-    });
-    this.displayTodos();
-  },
-  changeTodo: function(position, todoText) {
-    this.todos[position].todoText = todoText;
-    this.displayTodos();
-  },
-  deleteTodo: function(position) {
-    this.todos.splice(position, 1);
-    this.displayTodos();
-  },
-  toggleCompleted: function(position) {
-    var todo = this.todos[position];
-    todo.completed = !todo.completed;
-    this.displayTodos();
-  },
-  toggleAll: function() {
-    var totalTodos = this.todos.length;
-    var completedTodos = 0;
-    
-    // get number of completed todos
-    for (var i = 0; i < totalTodos; i++) {
-      if(this.todos[i].completed === true) {
-        completedTodos++;
-      }
-    }
-    
-    // Case1, if everything is true, make everything false
-    if (completedTodos === totalTodos) {
-      for (var i = 0; i < totalTodos; i++) {
-        this.todos[i].completed = false;
-      }  
-    // Case2, otherwise, make everything true
-    } else {
-      for (var i = 0; i < totalTodos; i++) {
-        this.todos[i].completed = true;
-      }
-    }
-    
-    this.displayTodos();
-  }
+	todos: [],
+	addTodo: function (todoText) { // addTodo('hi')
+		this.todos.push({
+			todoText: todoText, // todoTest: "hi"
+			completed: false
+		});
+	},
+	changeTodo: function (position, todoText) {
+		this.todos[position].todoText = todoText;
+	},
+	deleteTodo: function (position) {
+		this.todos.splice(position, 1);
+	},
+	toggleCompleted: function (position) {
+		var todo = this.todos[position];
+		todo.completed = !todo.completed;
+	},
+	toggleAll: function () {
+		var totalTodos = this.todos.length;
+		var completedTodos = 0;
+
+		// get number of completed todos
+		for (var i = 0; i < totalTodos; i++) {
+			if (this.todos[i].completed === true) {
+				completedTodos++;
+			}
+		}
+
+		// Case1, if everything is true, make everything false
+		if (completedTodos === totalTodos) {
+			for (var i = 0; i < totalTodos; i++) {
+				this.todos[i].completed = false;
+			}
+			// Case2, otherwise, make everything true
+		} else {
+			for (var i = 0; i < totalTodos; i++) {
+				this.todos[i].completed = true;
+			}
+		}
+	}
 }
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 // We want to get access to the display todos button
 var displayTodosButton = document.getElementById("displayTodosButton");
@@ -100,6 +81,8 @@ toggleAllButton.addEventListener("click", function() {
 
 
 =======
+=======
+>>>>>>> master
 var handlers = {
 	addTodo: function () {
 		var addTodoTextInput = document.getElementById("addTodoTextInput");
@@ -115,8 +98,15 @@ var handlers = {
 		changeTodoTextInput.value = "";
 		view.displayTodos();
 	},
+<<<<<<< HEAD
 	deleteTodo: function (position) {
 		todoList.deleteTodo(position);
+=======
+	deleteTodo: function () {
+		var deleteTodoPositionInput = document.getElementById("deleteTodoPositionInput");
+		todoList.deleteTodo(deleteTodoPositionInput.valueAsNumber);
+		deleteTodoPositionInput.value = "";
+>>>>>>> master
 		view.displayTodos();
 	},
 	toggleCompleted: function () {
@@ -146,6 +136,7 @@ var view = {
 				todoTextWithCompletion = '( ) ' + todo.todoText;
 			}
 
+<<<<<<< HEAD
 			todoLi.id = i;
 			todoLi.textContent = todoTextWithCompletion;
 			todoLi.appendChild(this.createDeleteButton());
@@ -175,3 +166,10 @@ var view = {
 view.setUpEventListeners();
 >>>>>>> Stashed changes
 
+=======
+			todoLi.textContent = todoTextWithCompletion;
+			todosUl.appendChild(todoLi);
+		}
+	}
+};
+>>>>>>> master
