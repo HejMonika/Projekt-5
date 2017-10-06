@@ -114,4 +114,3 @@ var view = {
 };
 
 view.setUpEventListeners();
-
