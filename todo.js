@@ -41,6 +41,48 @@ var todoList = {
 	}
 }
 
+<<<<<<< HEAD
+<<<<<<< Updated upstream
+// We want to get access to the display todos button
+var displayTodosButton = document.getElementById("displayTodosButton");
+var toggleAllButton = document.getElementById("toggleAllButton");
+
+// We want to run displayTodos method, when someone clicks te display todos button
+displayTodosButton.addEventListener("click", function() {
+  todoList.displayTodos();
+});
+
+toggleAllButton.addEventListener("click", function() {
+  todoList.toggleAll();
+})
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=======
+=======
+>>>>>>> master
 var handlers = {
 	addTodo: function () {
 		var addTodoTextInput = document.getElementById("addTodoTextInput");
@@ -56,10 +98,15 @@ var handlers = {
 		changeTodoTextInput.value = "";
 		view.displayTodos();
 	},
+<<<<<<< HEAD
+	deleteTodo: function (position) {
+		todoList.deleteTodo(position);
+=======
 	deleteTodo: function () {
 		var deleteTodoPositionInput = document.getElementById("deleteTodoPositionInput");
 		todoList.deleteTodo(deleteTodoPositionInput.valueAsNumber);
 		deleteTodoPositionInput.value = "";
+>>>>>>> master
 		view.displayTodos();
 	},
 	toggleCompleted: function () {
@@ -89,8 +136,40 @@ var view = {
 				todoTextWithCompletion = '( ) ' + todo.todoText;
 			}
 
+<<<<<<< HEAD
+			todoLi.id = i;
+			todoLi.textContent = todoTextWithCompletion;
+			todoLi.appendChild(this.createDeleteButton());
+			todosUl.appendChild(todoLi);
+		}
+	},
+	createDeleteButton: function () {
+		var deleteButton = document.createElement("button");
+		deleteButton.textContent = "Delete";
+		deleteButton.className = "deleteButton";
+		return deleteButton;
+	},
+	setUpEventListeners: function () {
+		var todoUl = document.querySelector('ul');
+
+		todoUl.addEventListener('click', function (event) {
+			// get te element tat was clicked on
+			var elementClicked = event.target;
+			// check if elementClicked is a delete button
+			if (elementClicked.className === 'deleteButton') {
+				handlers.deleteTodo(parseInt(elementClicked.parentNode.id));
+			}
+		});
+	}
+};
+
+view.setUpEventListeners();
+>>>>>>> Stashed changes
+
+=======
 			todoLi.textContent = todoTextWithCompletion;
 			todosUl.appendChild(todoLi);
 		}
 	}
 };
+>>>>>>> master
